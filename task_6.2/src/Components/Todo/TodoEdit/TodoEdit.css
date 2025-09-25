@@ -1,0 +1,65 @@
+.todo-edit-container{
+    padding:  0 8px; 
+
+    transition: ease-in-out 10s;
+    
+     border-bottom: 1px solid #8FA8C14D;
+}
+
+.todo-edit-container .todo-edit-items{
+    display: flex;
+    padding: 0px 40px;
+    padding-top: 14px; 
+    padding-bottom: 10px;
+     /* border-bottom: 1px solid #8FA8C14D; */
+
+}
+
+.todo-edit-container .todo-edit-items input{
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    font-size: 14px;
+    background: #152431;
+    border: 1px solid #8FA8C180;
+    margin-right: 8px;
+    height: 40px;
+    color: #8FA8C1;
+}
+
+.todo-edit-container .todo-edit-items input::placeholder{
+    color: #8FA8C1;
+}
+
+.todo-edit-container .todo-edit-items button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    font-size: 12px;
+    padding: 13px 23px;
+    border-radius: 4px;
+    background: #0C5488;
+    width: 76px;
+    color : #8FA8C1;
+    margin: 0 9px;
+    font-weight: 500;
+
+
+}
+
+.todo-edit-container .todo-edit-items .cancel-button{
+    padding: 13px 15px;
+    color: #0C5488;
+    background : #8FA8C1;
+}
+
+ .danger{
+    color: #8FA8C1;
+    font-size: 12px;
+    margin: 5px 0;
+    margin-left: 40px;
+    display: flex;
+    align-items: flex-start;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}

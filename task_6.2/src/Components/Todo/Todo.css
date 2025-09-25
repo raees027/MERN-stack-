@@ -1,0 +1,17 @@
+.todo-container{
+    max-width:600px;
+    background-color: #152431;
+    border-radius: 4px;
+    min-height: 639px;
+    min-width: 524px;
+}
+.todo-container .title{
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 36px;
+    color: #8FA8C1;
+    margin-top: 27px;
+    margin-bottom: 36px;
+
+}
+
