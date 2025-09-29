@@ -1,0 +1,17 @@
+.counter-section {
+justify-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+button{
+    margin-right: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
