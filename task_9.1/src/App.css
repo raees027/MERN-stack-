@@ -1,0 +1,89 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&family=Libertinus+Serif+Display&display=swap'); */
+@import url(./Styles/variables.css);
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&family=Libertinus+Serif+Display&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.search-container{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color:var(--primary-color);
+    background-color:var(--secondary-color); 
+    padding: 0 20px;
+}
+
+
+.search-section{
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+
+  
+}
+
+
+
+.search-section h1{
+  /* font-size: 15px; */
+  margin-bottom: 10px;
+  font-family: "Bitcount Prop Single Ink", system-ui;
+}
+
+.search-section input{
+  margin: 5px 30px;
+  outline: none;
+  border: none;
+  padding: 14px;
+  border-radius: 25px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+.search-section button{
+  font-weight: bold;
+  font-size: 16px;
+  border: 0;
+  outline: 0;
+  border-radius: 80px;
+  padding: 10px;
+  margin: 10px 130px;
+  cursor: pointer;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
+
+
+.localstorage-section{
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+margin-top: 30px;
+  
+}
+.localstorage-section input{
+  
+  margin: 8px 10px;
+  outline: none;
+  border: none;
+  padding: 14px;
+  border-radius: 25px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+.localstorage-section label{
+  margin-left: 8px;
+  font-family: sans-serif;
+}
+
+.localstorage-section button{
+  font-weight: bold;
+  font-size: 16px;
+  border: 0;
+  outline: 0;
+  border-radius: 80px;
+  padding: 20px;
+  margin: 10px 100px;
+  cursor: pointer;
+  color: var(--secondary-color);
+  background-color: var(--primary-color); 
+}
