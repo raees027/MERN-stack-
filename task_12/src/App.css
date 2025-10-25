@@ -1,0 +1,75 @@
+.home-section-container{
+  background-color: white;
+  min-width: 400px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.249);
+}
+
+.home-section-container h1{
+  margin-bottom: 10px;
+  color: black;
+  font-size: 40px;
+}
+
+.caption{
+  font-size: 16px;
+  color: rgb(159, 159, 159);
+  margin-bottom: 30px;
+}
+
+.name-section ,.email-section ,.gender-section, .country-section{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px; 
+}
+.name-section input,.email-section input,.country-section select{
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  outline: none;
+}
+.name-section input:focus,.email-section input:focus{
+  border-bottom: 1px solid black;
+}
+
+.name-section label ,.email-section label,.gender-section label, .country-section label{
+  font-size: 16px;
+  font-weight: bold;
+
+}
+.gender-section  .radio-buttons{
+  margin: 0 10px;
+  font-weight: lighter;
+}
+.country-section select{
+  border: 1px solid #ccc;
+}
+.country-section label{
+  margin-bottom: 12px;
+}
+form button{
+  width: 100%;
+  padding: 15px 0;
+  background-color: orangered;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+form button:hover{
+  background-color: purple;
+}
+
+.danger{
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
