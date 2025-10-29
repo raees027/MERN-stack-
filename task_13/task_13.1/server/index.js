@@ -7,7 +7,22 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/movies", (req, res) => {
-  res.status(200).json(movieList);
+  const { movieName } = req.query;
+
+  let filteredMovies = [];
+  if (movieName) {
+    filteredMovies = movieList.filter((data) =>
+      data.title.toLowerCase().includes(movieName.toLowerCase())
+    );
+  } else {
+    filteredMovies = movieList;
+  }
+
+  res.json({ results: filteredMovies });
+});
+
+app.use((req, res) => {
+  res.status(404).json("This page doesnt exist");
 });
 
 const PORT = 3008;
