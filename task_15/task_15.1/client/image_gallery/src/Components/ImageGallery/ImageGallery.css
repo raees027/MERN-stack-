@@ -1,0 +1,154 @@
+.image-gallery-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 80px 20px;
+}
+
+.image-gallery-container h2{
+    font-weight: 400;
+    font-size: 50px;
+    margin-bottom: 12px;
+}
+
+.image-gallery-container h3{
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 32px;
+    color: var(--subheading-color);
+}
+
+.image-gallery-container .image-uploading-section{
+    margin-top: 76px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 967px;
+}
+
+.image-gallery-container .image-uploading-section p{
+    font-weight: 400;
+    font-size: 22px;
+    color: #ACACAC;
+    margin-bottom: 27px;
+}
+
+.image-gallery-container .image-uploading-section .progress-bar{
+    background-color: #EFD9C2;
+    width: 100%;
+    height: 7px;
+    margin-bottom: 33px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image-gallery-container .image-uploading-section .progress-bar .fill{
+      height: 100%;
+    background: #EFD9C2;
+    width: 0%;
+     transition: width 0.3s ease;
+}
+
+/* -------- Desktop (Default) 3 images row - 300px -------- */
+.image-gallery-container .image-uploading-section .image-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    justify-content: center;
+    gap: 23px;
+    width: 100%;
+    max-width: 967px;
+}
+
+.image-gallery-container .image-uploading-section .image-grid img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.close-btn {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* -------- For screens smaller than 955px -------- */
+@media (max-width: 955px) {
+  .image-gallery-container .image-uploading-section .image-grid {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    gap: 100px;
+  }
+
+  .image-gallery-container .image-uploading-section .image-grid img {
+    height: 250px;
+  }
+}
+
+/* -------- Tablets (<786px) -------- */
+@media (max-width: 786px) {
+    .image-gallery-container .image-uploading-section .progress-bar{
+        width: 85%;
+    }
+
+    .image-gallery-container .image-uploading-section .image-grid{
+        grid-template-columns: repeat(2, 190px);
+        gap: 18px;
+        max-width: 85%;
+    }
+
+    .image-gallery-container .image-uploading-section .image-grid img{
+        width: 190px;
+        height: 190px;
+    }
+}
+
+/* -------- Phones (<480px) -------- */
+@media (max-width: 480px) {
+    .image-gallery-container .image-uploading-section .image-grid{
+        grid-template-columns: repeat(2, 145px);
+        gap: 14px;
+    }
+
+    .image-gallery-container .image-uploading-section .image-grid img{
+        width: 145px;
+        height: 145px;
+    }
+}
+
+/* -------- Extra Small Phones (<380px) -------- */
+@media (max-width: 380px) {
+    .image-gallery-container .image-uploading-section .image-grid{
+        grid-template-columns: repeat(1, 100%);
+    }
+
+    .image-gallery-container .image-uploading-section .image-grid img{
+        width: 100%;
+        height: auto;
+    }
+}
