@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import "../Todo/Todo.css";
-import { BsPencilFill, BsTrashFill, BsCircle } from "react-icons/bs";
-import { AiFillCheckCircle } from "react-icons/ai";
+
+import {
+  FaPencilAlt,
+  FaTrash,
+  FaRegCircle,
+  FaCheckCircle,
+} from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
 import axios from "axios";
@@ -30,33 +35,44 @@ export const Todo = () => {
 
   useEffect(() => {
     fetchTodo();
-    inputRef.current?.focus();
+    inputRef.current.focus();
   }, []);
 
   useEffect(() => {
-    let count = todoList.filter((item) => item.isCompleted == false).length;
+    let count = todoList.filter((item) => item.isCompleted === false).length;
     setItemLeft(count);
   }, [todoList]);
 
   const handleAddTodo = async () => {
     if (newTodo) {
       try {
-        const response = await postAPI("POST", { todo: newTodo });
+        const response = await postAPI("POST", {
+          todo: newTodo,
+        });
+
         setTodoList(response.data);
         setNewTodo("");
+
         todoListRef.current.scrollTo({ top: 0, behavior: "smooth" });
         inputRef.current.focus();
       } catch (error) {
-        console.log(error.response?.data?.message);
+        console.log(error.response.data.message);
       }
-    } else alert("An empty world is impossible!");
+    } else {
+      alert("An empty world is impossible!");
+    }
   };
 
   const todoIsCompleted = (id) => {
-    const newlist = todoList.map((item) =>
-      item.id == id ? { ...item, isCompleted: !item.isCompleted } : item
-    );
+    const newlist = todoList.map((item) => {
+      if (item.id === id) {
+        return { ...item, isCompleted: !item.isCompleted };
+      } else {
+        return { ...item };
+      }
+    });
     setTodoList(newlist);
+    localStorage.setItem("TFR-TODO", JSON.stringify(newlist));
   };
 
   const todoDelete = async (id) => {
@@ -64,14 +80,14 @@ export const Todo = () => {
       const response = await postAPI("DELETE", { id });
       setTodoList(response.data);
     } catch (error) {
-      console.log(error.response?.data?.message);
+      console.log(error.response.data.message);
     }
   };
 
   const handleTodoEdit = (id) => {
     setEditTodeId(id);
     const editTodoList = [...todoList];
-    const index = editTodoList.findIndex((obj) => obj.id == id);
+    const index = editTodoList.findIndex((obj) => obj.id === id);
     setEditTodo(editTodoList[index].todo);
     setTimeout(() => inputEditRef.current.focus(), 0);
   };
@@ -90,7 +106,7 @@ export const Todo = () => {
         setTodoList(response.data);
         setEditTodeId("");
       } catch (error) {
-        console.log(error.response?.data?.message);
+        console.log(error.response.data.message);
       }
     } else alert("An empty world is impossible!..");
   };
@@ -102,6 +118,7 @@ export const Todo = () => {
           <div className="todo-title">
             <p>Todo List</p>
           </div>
+
           <div className="todo-add">
             <div className="add-input">
               <input
@@ -109,7 +126,7 @@ export const Todo = () => {
                 placeholder="What needs to be done?"
                 ref={inputRef}
                 value={newTodo}
-                onChange={(e) => setNewTodo(e.target.value)}
+                onChange={(event) => setNewTodo(event.target.value)}
               />
               {newTodo && (
                 <span>
@@ -129,13 +146,14 @@ export const Todo = () => {
           <div className="todo-list" ref={todoListRef}>
             {todoList?.map((item) => (
               <div key={item.id} className="todo-item">
-                {editTodoId === item.id ? (
+                {editTodoId !== "" && editTodoId === item.id ? (
                   <div className="edit-todo">
                     <div className="edit-input">
                       <input
+                        type="text"
                         ref={inputEditRef}
                         value={editTodo}
-                        onChange={(e) => setEditTodo(e.target.value)}
+                        onChange={(event) => setEditTodo(event.target.value)}
                       />
                       {editTodo && (
                         <span>
@@ -167,9 +185,9 @@ export const Todo = () => {
                     >
                       <span>
                         {!item.isCompleted ? (
-                          <BsCircle className="uncheck-icon" />
+                          <FaRegCircle className="uncheck-icon" />
                         ) : (
-                          <AiFillCheckCircle className="check-icon" />
+                          <FaCheckCircle className="check-icon" />
                         )}
                       </span>
                       <p
@@ -183,11 +201,11 @@ export const Todo = () => {
                       </p>
                     </div>
                     <div className="item-action">
-                      <BsPencilFill
+                      <FaPencilAlt
                         className="action-edit"
                         onClick={() => handleTodoEdit(item.id)}
                       />
-                      <BsTrashFill
+                      <FaTrash
                         className="action-delete"
                         onClick={() => todoDelete(item.id)}
                       />
