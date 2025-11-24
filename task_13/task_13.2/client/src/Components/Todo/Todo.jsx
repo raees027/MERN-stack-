@@ -1,8 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import "../Todo/Todo.css";
 
-import { FaPen, FaTrash, FaRegCircle, FaCheckCircle } from "react-icons/fa";
-import { IoMdClose } from "react-icons/io";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPen,
+  faTrash,
+  faCheckCircle,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 import axios from "axios";
 import { postAPI } from "./api";
@@ -125,7 +131,8 @@ export const Todo = () => {
               />
               {newTodo && (
                 <span>
-                  <IoMdClose
+                  <FontAwesomeIcon
+                    icon={faXmark}
                     className="clear-icon"
                     onClick={() => {
                       setNewTodo("");
@@ -152,7 +159,8 @@ export const Todo = () => {
                       />
                       {editTodo && (
                         <span>
-                          <IoMdClose
+                          <FontAwesomeIcon
+                            icon={faXmark}
                             className="clear-icon"
                             onClick={() => {
                               setEditTodo("");
@@ -180,9 +188,15 @@ export const Todo = () => {
                     >
                       <span>
                         {!item.isCompleted ? (
-                          <FaRegCircle className="uncheck-icon" />
+                          <FontAwesomeIcon
+                            icon={faCircle}
+                            className="uncheck-icon"
+                          />
                         ) : (
-                          <FaCheckCircle className="check-icon" />
+                          <FontAwesomeIcon
+                            icon={faCheckCircle}
+                            className="check-icon"
+                          />
                         )}
                       </span>
                       <p
@@ -196,11 +210,13 @@ export const Todo = () => {
                       </p>
                     </div>
                     <div className="item-action">
-                      <FaPen
+                      <FontAwesomeIcon
+                        icon={faPen}
                         className="action-edit"
                         onClick={() => handleTodoEdit(item.id)}
                       />
-                      <FaTrash
+                      <FontAwesomeIcon
+                        icon={faTrash}
                         className="action-delete"
                         onClick={() => todoDelete(item.id)}
                       />
