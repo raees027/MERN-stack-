@@ -128,7 +128,7 @@ export const Todo = () => {
                 id=""
                 ref={inputRef}
                 value={newTodo}
-                onChange={() => setNewTodo(event.target.value)}
+                onChange={(event) => setNewTodo(event.target.value)}
               />
               {newTodo && (
                 <span>
@@ -156,7 +156,7 @@ export const Todo = () => {
                         id=""
                         ref={inputEditRef}
                         value={editTodo}
-                        onChange={() => setEditTodo(event.target.value)}
+                        onChange={(event) => setEditTodo(event.target.value)}
                       />
                       {editTodo && (
                         <span>
