@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import "../Todo/Todo.css";
-import {
-  BsFillPencilFill,
-  BsFillTrash3Fill,
-  BsCheckCircle,
-} from "react-icons/bs";
-import { AiOutlineCheckCircle } from "react-icons/ai";
-import { IoIosClose } from "react-icons/io";
+import { BsPencilFill, BsTrashFill, BsCircle } from "react-icons/bs";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { IoMdClose } from "react-icons/io";
 
 import axios from "axios";
 import { postAPI } from "./api";
@@ -34,7 +30,7 @@ export const Todo = () => {
 
   useEffect(() => {
     fetchTodo();
-    inputRef.current.focus();
+    inputRef.current?.focus();
   }, []);
 
   useEffect(() => {
@@ -45,43 +41,30 @@ export const Todo = () => {
   const handleAddTodo = async () => {
     if (newTodo) {
       try {
-        const response = await postAPI("POST", {
-          todo: newTodo,
-        });
-
+        const response = await postAPI("POST", { todo: newTodo });
         setTodoList(response.data);
         setNewTodo("");
-
         todoListRef.current.scrollTo({ top: 0, behavior: "smooth" });
         inputRef.current.focus();
       } catch (error) {
-        console.log(error.response.data.message);
+        console.log(error.response?.data?.message);
       }
-    } else {
-      alert("An empty world is impossible!");
-    }
+    } else alert("An empty world is impossible!");
   };
 
   const todoIsCompleted = (id) => {
-    const newlist = todoList.map((item) => {
-      if (item.id == id) {
-        return { ...item, isCompleted: !item.isCompleted };
-      } else {
-        return { ...item };
-      }
-    });
+    const newlist = todoList.map((item) =>
+      item.id == id ? { ...item, isCompleted: !item.isCompleted } : item
+    );
     setTodoList(newlist);
-    localStorage.setItem("TFR-TODO", JSON.stringify(newlist));
   };
 
   const todoDelete = async (id) => {
     try {
-      const response = await postAPI("DELETE", {
-        id: id,
-      });
+      const response = await postAPI("DELETE", { id });
       setTodoList(response.data);
     } catch (error) {
-      console.log(error.response.data.message);
+      console.log(error.response?.data?.message);
     }
   };
 
@@ -107,7 +90,7 @@ export const Todo = () => {
         setTodoList(response.data);
         setEditTodeId("");
       } catch (error) {
-        console.log(error.response.data.message);
+        console.log(error.response?.data?.message);
       }
     } else alert("An empty world is impossible!..");
   };
@@ -124,15 +107,13 @@ export const Todo = () => {
               <input
                 type="text"
                 placeholder="What needs to be done?"
-                name="addnew"
-                id=""
                 ref={inputRef}
                 value={newTodo}
-                onChange={(event) => setNewTodo(event.target.value)}
+                onChange={(e) => setNewTodo(e.target.value)}
               />
               {newTodo && (
                 <span>
-                  <IoIosClose
+                  <IoMdClose
                     className="clear-icon"
                     onClick={() => {
                       setNewTodo("");
@@ -142,25 +123,23 @@ export const Todo = () => {
                 </span>
               )}
             </div>
-            <button onClick={() => handleAddTodo()}>ADD TODO</button>
+            <button onClick={handleAddTodo}>ADD TODO</button>
           </div>
+
           <div className="todo-list" ref={todoListRef}>
             {todoList?.map((item) => (
               <div key={item.id} className="todo-item">
-                {editTodoId != "" && editTodoId === item.id ? (
+                {editTodoId === item.id ? (
                   <div className="edit-todo">
                     <div className="edit-input">
                       <input
-                        type="text"
-                        name=""
-                        id=""
                         ref={inputEditRef}
                         value={editTodo}
-                        onChange={(event) => setEditTodo(event.target.value)}
+                        onChange={(e) => setEditTodo(e.target.value)}
                       />
                       {editTodo && (
                         <span>
-                          <IoIosClose
+                          <IoMdClose
                             className="clear-icon"
                             onClick={() => {
                               setEditTodo("");
@@ -171,7 +150,7 @@ export const Todo = () => {
                       )}
                     </div>
                     <div className="edit-action">
-                      <button onClick={() => updateTodo(item.id)}>Save</button>
+                      <button onClick={updateTodo}>Save</button>
                       <button
                         className="btn-cancel"
                         onClick={() => setEditTodeId("")}
@@ -188,9 +167,9 @@ export const Todo = () => {
                     >
                       <span>
                         {!item.isCompleted ? (
-                          <BsCheckCircle className="uncheck-icon" />
+                          <BsCircle className="uncheck-icon" />
                         ) : (
-                          <AiOutlineCheckCircle className="check-icon" />
+                          <AiFillCheckCircle className="check-icon" />
                         )}
                       </span>
                       <p
@@ -204,11 +183,11 @@ export const Todo = () => {
                       </p>
                     </div>
                     <div className="item-action">
-                      <BsFillPencilFill
+                      <BsPencilFill
                         className="action-edit"
                         onClick={() => handleTodoEdit(item.id)}
                       />
-                      <BsFillTrash3Fill
+                      <BsTrashFill
                         className="action-delete"
                         onClick={() => todoDelete(item.id)}
                       />
