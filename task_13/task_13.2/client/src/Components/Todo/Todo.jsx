@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import "../Todo/Todo.css";
-import { BsFillPencilFill, BsFillTrash3Fill, BsCircle } from "react-icons/bs";
+import {
+  BsFillPencilFill,
+  BsFillTrash3Fill,
+  BsCheckCircle,
+} from "react-icons/bs";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { IoIosClose } from "react-icons/io";
+
 import axios from "axios";
 import { postAPI } from "./api";
 
@@ -183,7 +188,7 @@ export const Todo = () => {
                     >
                       <span>
                         {!item.isCompleted ? (
-                          <BsCircle className="uncheck-icon" />
+                          <BsCheckCircle className="uncheck-icon" />
                         ) : (
                           <AiOutlineCheckCircle className="check-icon" />
                         )}
