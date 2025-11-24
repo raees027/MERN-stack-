@@ -1,12 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "../Todo/Todo.css";
 
-import {
-  FaPencilAlt,
-  FaTrash,
-  FaRegCircle,
-  FaCheckCircle,
-} from "react-icons/fa";
+import { FaPen, FaTrash, FaRegCircle, FaCheckCircle } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
 import axios from "axios";
@@ -201,7 +196,7 @@ export const Todo = () => {
                       </p>
                     </div>
                     <div className="item-action">
-                      <FaPencilAlt
+                      <FaPen
                         className="action-edit"
                         onClick={() => handleTodoEdit(item.id)}
                       />
